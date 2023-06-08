@@ -1,0 +1,1362 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "ScenarioModifiers": {
+      "type": "object",
+      "properties": {
+        "ScenarioModifier": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "start": {
+                "type": "number"
+              },
+              "step": {
+                "type": "number"
+              },
+              "stop": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "name",
+              "start",
+              "step",
+              "stop"
+            ]
+          }
+        }
+      },
+      "required": [
+        "ScenarioModifier"
+      ]
+    },
+    "OpenSCENARIO": {
+      "type": "object",
+      "properties": {
+        "FileHeader": {
+          "type": "object",
+          "properties": {
+            "revMajor": {
+              "type": "integer"
+            },
+            "revMinor": {
+              "type": "integer"
+            },
+            "date": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "author": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "author",
+            "date",
+            "description",
+            "revMajor",
+            "revMinor"
+          ]
+        },
+        "ParameterDeclarations": {
+          "type": "object",
+          "properties": {
+            "ParameterDeclaration": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "parameterType": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "parameterType",
+                  "value"
+                ]
+              }
+            }
+          },
+          "required": [
+            "ParameterDeclaration"
+          ]
+        },
+        "CatalogLocations": {
+          "type": "object",
+          "properties": {
+            "CatalogLocation": {
+              "type": "array"
+            }
+          },
+          "required": [
+            "CatalogLocation"
+          ]
+        },
+        "RoadNetwork": {
+          "type": "object",
+          "properties": {
+            "LogicFile": {
+              "type": "object",
+              "properties": {
+                "filepath": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "filepath"
+              ]
+            },
+            "SceneGraphFile": {
+              "type": "object",
+              "properties": {
+                "filepath": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "filepath"
+              ]
+            },
+            "TrafficSignals": {
+              "anyOf": [
+                {
+                  "type": "array"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "TrafficSignalController": {
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "TrafficSignalController"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "LogicFile",
+            "TrafficSignals"
+          ]
+        },
+        "Entities": {
+          "type": "object",
+          "properties": {
+            "ScenarioObject": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "Vehicle": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "vehicleCategory": {
+                        "type": "string"
+                      },
+                      "BoundingBox": {
+                        "type": "object",
+                        "properties": {
+                          "Center": {
+                            "type": "object",
+                            "properties": {
+                              "x": {
+                                "type": "number"
+                              },
+                              "y": {
+                                "type": "integer"
+                              },
+                              "z": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "x",
+                              "y",
+                              "z"
+                            ]
+                          },
+                          "Dimensions": {
+                            "type": "object",
+                            "properties": {
+                              "width": {
+                                "type": "number"
+                              },
+                              "length": {
+                                "type": "number"
+                              },
+                              "height": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "height",
+                              "length",
+                              "width"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "Center",
+                          "Dimensions"
+                        ]
+                      },
+                      "Performance": {
+                        "type": "object",
+                        "properties": {
+                          "maxSpeed": {
+                            "type": "integer"
+                          },
+                          "maxAcceleration": {
+                            "type": "string"
+                          },
+                          "maxDeceleration": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "maxAcceleration",
+                          "maxDeceleration",
+                          "maxSpeed"
+                        ]
+                      },
+                      "Axles": {
+                        "type": "object",
+                        "properties": {
+                          "FrontAxle": {
+                            "type": "object",
+                            "properties": {
+                              "maxSteering": {
+                                "type": "number"
+                              },
+                              "wheelDiameter": {
+                                "type": "number"
+                              },
+                              "trackWidth": {
+                                "type": "number"
+                              },
+                              "positionX": {
+                                "type": "number"
+                              },
+                              "positionZ": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "maxSteering",
+                              "positionX",
+                              "positionZ",
+                              "trackWidth",
+                              "wheelDiameter"
+                            ]
+                          },
+                          "RearAxle": {
+                            "type": "object",
+                            "properties": {
+                              "maxSteering": {
+                                "type": "number"
+                              },
+                              "wheelDiameter": {
+                                "type": "number"
+                              },
+                              "trackWidth": {
+                                "type": "number"
+                              },
+                              "positionX": {
+                                "type": "number"
+                              },
+                              "positionZ": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "maxSteering",
+                              "positionX",
+                              "positionZ",
+                              "trackWidth",
+                              "wheelDiameter"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "FrontAxle",
+                          "RearAxle"
+                        ]
+                      },
+                      "Properties": {
+                        "type": "object",
+                        "properties": {
+                          "Property": {
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "Property"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "Axles",
+                      "BoundingBox",
+                      "Performance",
+                      "Properties",
+                      "name",
+                      "vehicleCategory"
+                    ]
+                  },
+                  "ObjectController": {
+                    "type": "object",
+                    "properties": {
+                      "Controller": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "Properties": {
+                            "type": "object",
+                            "properties": {
+                              "Property": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "value"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "Property"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "Properties",
+                          "name"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "Controller"
+                    ]
+                  },
+                  "Pedestrian": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "mass": {
+                        "type": "integer"
+                      },
+                      "model": {
+                        "type": "string"
+                      },
+                      "pedestrianCategory": {
+                        "type": "string"
+                      },
+                      "BoundingBox": {
+                        "type": "object",
+                        "properties": {
+                          "Center": {
+                            "type": "object",
+                            "properties": {
+                              "x": {
+                                "type": "integer"
+                              },
+                              "y": {
+                                "type": "integer"
+                              },
+                              "z": {
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "x",
+                              "y",
+                              "z"
+                            ]
+                          },
+                          "Dimensions": {
+                            "type": "object",
+                            "properties": {
+                              "width": {
+                                "type": "number"
+                              },
+                              "length": {
+                                "type": "number"
+                              },
+                              "height": {
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "height",
+                              "length",
+                              "width"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "Center",
+                          "Dimensions"
+                        ]
+                      },
+                      "Properties": {
+                        "type": "object",
+                        "properties": {
+                          "Property": {
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "Property"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "BoundingBox",
+                      "Properties",
+                      "mass",
+                      "model",
+                      "name",
+                      "pedestrianCategory"
+                    ]
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "required": [
+            "ScenarioObject"
+          ]
+        },
+        "Storyboard": {
+          "type": "object",
+          "properties": {
+            "Init": {
+              "type": "object",
+              "properties": {
+                "Actions": {
+                  "type": "object",
+                  "properties": {
+                    "Private": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "entityRef": {
+                            "type": "string"
+                          },
+                          "PrivateAction": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "TeleportAction": {
+                                  "type": "object",
+                                  "properties": {
+                                    "Position": {
+                                      "type": "object",
+                                      "properties": {
+                                        "LanePosition": {
+                                          "type": "object",
+                                          "properties": {
+                                            "roadId": {
+                                              "type": "string"
+                                            },
+                                            "laneId": {
+                                              "type": "string"
+                                            },
+                                            "s": {
+                                              "type": [
+                                                "number",
+                                                "string"
+                                              ]
+                                            },
+                                            "offset": {
+                                              "type": "number"
+                                            },
+                                            "Orientation": {
+                                              "type": "object",
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string"
+                                                },
+                                                "h": {
+                                                  "type": "number"
+                                                },
+                                                "p": {
+                                                  "type": "integer"
+                                                },
+                                                "r": {
+                                                  "type": "integer"
+                                                }
+                                              },
+                                              "required": [
+                                                "h",
+                                                "p",
+                                                "r",
+                                                "type"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "Orientation",
+                                            "laneId",
+                                            "offset",
+                                            "roadId",
+                                            "s"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "LanePosition"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "Position"
+                                  ]
+                                },
+                                "RoutingAction": {
+                                  "type": "object",
+                                  "properties": {
+                                    "AcquirePositionAction": {
+                                      "type": "object",
+                                      "properties": {
+                                        "Position": {
+                                          "type": "object",
+                                          "properties": {
+                                            "LanePosition": {
+                                              "type": "object",
+                                              "properties": {
+                                                "roadId": {
+                                                  "type": "string"
+                                                },
+                                                "laneId": {
+                                                  "type": "string"
+                                                },
+                                                "s": {
+                                                  "type": "number"
+                                                },
+                                                "offset": {
+                                                  "type": "number"
+                                                },
+                                                "Orientation": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "type": {
+                                                      "type": "string"
+                                                    },
+                                                    "h": {
+                                                      "type": "number"
+                                                    },
+                                                    "p": {
+                                                      "type": "integer"
+                                                    },
+                                                    "r": {
+                                                      "type": "integer"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "h",
+                                                    "p",
+                                                    "r",
+                                                    "type"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "Orientation",
+                                                "laneId",
+                                                "offset",
+                                                "roadId",
+                                                "s"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "LanePosition"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "Position"
+                                      ]
+                                    },
+                                    "AssignRouteAction": {
+                                      "type": "object",
+                                      "properties": {
+                                        "Route": {
+                                          "type": "object",
+                                          "properties": {
+                                            "name": {
+                                              "type": "string"
+                                            },
+                                            "closed": {
+                                              "type": "boolean"
+                                            },
+                                            "Waypoint": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "Position": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "LanePosition": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "roadId": {
+                                                            "type": "string"
+                                                          },
+                                                          "laneId": {
+                                                            "type": "string"
+                                                          },
+                                                          "s": {
+                                                            "type": "number"
+                                                          },
+                                                          "offset": {
+                                                            "type": "integer"
+                                                          },
+                                                          "Orientation": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "type": {
+                                                                "type": "string"
+                                                              },
+                                                              "h": {
+                                                                "type": "number"
+                                                              },
+                                                              "p": {
+                                                                "type": "integer"
+                                                              },
+                                                              "r": {
+                                                                "type": "integer"
+                                                              }
+                                                            },
+                                                            "required": [
+                                                              "h",
+                                                              "p",
+                                                              "r",
+                                                              "type"
+                                                            ]
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "Orientation",
+                                                          "laneId",
+                                                          "offset",
+                                                          "roadId",
+                                                          "s"
+                                                        ]
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "LanePosition"
+                                                    ]
+                                                  },
+                                                  "routeStrategy": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "Position",
+                                                  "routeStrategy"
+                                                ]
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "Waypoint",
+                                            "closed",
+                                            "name"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "Route"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "LongitudinalAction": {
+                                  "type": "object",
+                                  "properties": {
+                                    "SpeedAction": {
+                                      "type": "object",
+                                      "properties": {
+                                        "SpeedActionDynamics": {
+                                          "type": "object",
+                                          "properties": {
+                                            "dynamicsDimension": {
+                                              "type": "string"
+                                            },
+                                            "value": {
+                                              "type": "integer"
+                                            },
+                                            "dynamicsShape": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "dynamicsDimension",
+                                            "dynamicsShape",
+                                            "value"
+                                          ]
+                                        },
+                                        "SpeedActionTarget": {
+                                          "type": "object",
+                                          "properties": {
+                                            "AbsoluteTargetSpeed": {
+                                              "type": "object",
+                                              "properties": {
+                                                "value": {
+                                                  "type": [
+                                                    "number",
+                                                    "string"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "value"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "AbsoluteTargetSpeed"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "SpeedActionDynamics",
+                                        "SpeedActionTarget"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "SpeedAction"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "required": [
+                          "PrivateAction",
+                          "entityRef"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "Private"
+                  ]
+                }
+              },
+              "required": [
+                "Actions"
+              ]
+            },
+            "Story": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "Act": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "ManeuverGroup": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "maximumExecutionCount": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "Actors": {
+                                "type": "object",
+                                "properties": {
+                                  "selectTriggeringEntities": {
+                                    "type": "boolean"
+                                  },
+                                  "EntityRef": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "entityRef": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "entityRef"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "EntityRef",
+                                  "selectTriggeringEntities"
+                                ]
+                              },
+                              "Maneuver": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "Event": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "name": {
+                                            "type": "string"
+                                          },
+                                          "priority": {
+                                            "type": "string"
+                                          },
+                                          "StartTrigger": {
+                                            "type": "object",
+                                            "properties": {
+                                              "ConditionGroup": {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "Condition": {
+                                                      "type": "array",
+                                                      "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "name": {
+                                                            "type": "string"
+                                                          },
+                                                          "delay": {
+                                                            "type": "integer"
+                                                          },
+                                                          "conditionEdge": {
+                                                            "type": "string"
+                                                          },
+                                                          "ByEntityCondition": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "TriggeringEntities": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "triggeringEntitiesRule": {
+                                                                    "type": "string"
+                                                                  },
+                                                                  "EntityRef": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                      "type": "object",
+                                                                      "properties": {
+                                                                        "entityRef": {
+                                                                          "type": "string"
+                                                                        }
+                                                                      },
+                                                                      "required": [
+                                                                        "entityRef"
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                },
+                                                                "required": [
+                                                                  "EntityRef",
+                                                                  "triggeringEntitiesRule"
+                                                                ]
+                                                              },
+                                                              "EntityCondition": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "ReachPositionCondition": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                      "Position": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                          "LanePosition": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                              "roadId": {
+                                                                                "type": "string"
+                                                                              },
+                                                                              "laneId": {
+                                                                                "type": "string"
+                                                                              },
+                                                                              "s": {
+                                                                                "type": "number"
+                                                                              },
+                                                                              "offset": {
+                                                                                "type": "number"
+                                                                              },
+                                                                              "Orientation": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                  "type": {
+                                                                                    "type": "string"
+                                                                                  },
+                                                                                  "h": {
+                                                                                    "type": "number"
+                                                                                  },
+                                                                                  "p": {
+                                                                                    "type": "integer"
+                                                                                  },
+                                                                                  "r": {
+                                                                                    "type": "integer"
+                                                                                  }
+                                                                                },
+                                                                                "required": [
+                                                                                  "h",
+                                                                                  "p",
+                                                                                  "r",
+                                                                                  "type"
+                                                                                ]
+                                                                              }
+                                                                            },
+                                                                            "required": [
+                                                                              "Orientation",
+                                                                              "laneId",
+                                                                              "offset",
+                                                                              "roadId",
+                                                                              "s"
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        "required": [
+                                                                          "LanePosition"
+                                                                        ]
+                                                                      },
+                                                                      "tolerance": {
+                                                                        "type": "integer"
+                                                                      }
+                                                                    },
+                                                                    "required": [
+                                                                      "Position",
+                                                                      "tolerance"
+                                                                    ]
+                                                                  },
+                                                                  "CollisionCondition": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                      "EntityRef": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                          "entityRef": {
+                                                                            "type": "string"
+                                                                          }
+                                                                        },
+                                                                        "required": [
+                                                                          "entityRef"
+                                                                        ]
+                                                                      }
+                                                                    },
+                                                                    "required": [
+                                                                      "EntityRef"
+                                                                    ]
+                                                                  },
+                                                                  "SpeedCondition": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                      "rule": {
+                                                                        "type": "string"
+                                                                      },
+                                                                      "value": {
+                                                                        "type": "integer"
+                                                                      }
+                                                                    },
+                                                                    "required": [
+                                                                      "rule",
+                                                                      "value"
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "required": [
+                                                              "EntityCondition",
+                                                              "TriggeringEntities"
+                                                            ]
+                                                          },
+                                                          "ByValueCondition": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "SimulationTimeCondition": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "value": {
+                                                                    "type": "integer"
+                                                                  },
+                                                                  "rule": {
+                                                                    "type": "string"
+                                                                  }
+                                                                },
+                                                                "required": [
+                                                                  "rule",
+                                                                  "value"
+                                                                ]
+                                                              }
+                                                            },
+                                                            "required": [
+                                                              "SimulationTimeCondition"
+                                                            ]
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "conditionEdge",
+                                                          "delay",
+                                                          "name"
+                                                        ]
+                                                      }
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "Condition"
+                                                  ]
+                                                }
+                                              }
+                                            },
+                                            "required": [
+                                              "ConditionGroup"
+                                            ]
+                                          },
+                                          "Action": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string"
+                                                },
+                                                "UserDefinedAction": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "CustomCommandAction": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "type"
+                                                      ]
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "CustomCommandAction"
+                                                  ]
+                                                },
+                                                "PrivateAction": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "LongitudinalAction": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "SpeedAction": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "SpeedActionDynamics": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "dynamicsDimension": {
+                                                                  "type": "string"
+                                                                },
+                                                                "value": {
+                                                                  "type": "integer"
+                                                                },
+                                                                "dynamicsShape": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "dynamicsDimension",
+                                                                "dynamicsShape",
+                                                                "value"
+                                                              ]
+                                                            },
+                                                            "SpeedActionTarget": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "AbsoluteTargetSpeed": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "value": {
+                                                                      "type": "number"
+                                                                    }
+                                                                  },
+                                                                  "required": [
+                                                                    "value"
+                                                                  ]
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "AbsoluteTargetSpeed"
+                                                              ]
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "SpeedActionDynamics",
+                                                            "SpeedActionTarget"
+                                                          ]
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "SpeedAction"
+                                                      ]
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "LongitudinalAction"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "name"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "Action",
+                                          "StartTrigger",
+                                          "name",
+                                          "priority"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "Event",
+                                    "name"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "Actors",
+                              "Maneuver",
+                              "maximumExecutionCount",
+                              "name"
+                            ]
+                          }
+                        },
+                        "StartTrigger": {
+                          "type": "object",
+                          "properties": {
+                            "ConditionGroup": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Condition": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "delay": {
+                                          "type": "integer"
+                                        },
+                                        "conditionEdge": {
+                                          "type": "string"
+                                        },
+                                        "ByValueCondition": {
+                                          "type": "object",
+                                          "properties": {
+                                            "SimulationTimeCondition": {
+                                              "type": "object",
+                                              "properties": {
+                                                "value": {
+                                                  "type": "integer"
+                                                },
+                                                "rule": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "rule",
+                                                "value"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "SimulationTimeCondition"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "ByValueCondition",
+                                        "conditionEdge",
+                                        "delay",
+                                        "name"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "Condition"
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "ConditionGroup"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "ManeuverGroup",
+                        "StartTrigger",
+                        "name"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "Act",
+                  "name"
+                ]
+              }
+            },
+            "StopTrigger": {
+              "type": "object",
+              "properties": {
+                "ConditionGroup": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Condition": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "delay": {
+                              "type": "integer"
+                            },
+                            "conditionEdge": {
+                              "type": "string"
+                            },
+                            "ByValueCondition": {
+                              "type": "object",
+                              "properties": {
+                                "SimulationTimeCondition": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "integer"
+                                    },
+                                    "rule": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "rule",
+                                    "value"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "SimulationTimeCondition"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "ByValueCondition",
+                            "conditionEdge",
+                            "delay",
+                            "name"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "Condition"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "ConditionGroup"
+              ]
+            }
+          },
+          "required": [
+            "Init",
+            "StopTrigger",
+            "Story"
+          ]
+        }
+      },
+      "required": [
+        "CatalogLocations",
+        "Entities",
+        "FileHeader",
+        "ParameterDeclarations",
+        "RoadNetwork",
+        "Storyboard"
+      ]
+    }
+  },
+  "required": [
+    "OpenSCENARIO",
+    "ScenarioModifiers"
+  ]
+}
